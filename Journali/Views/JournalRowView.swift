@@ -32,8 +32,7 @@ struct JournalRowView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(red: 0.11, green: 0.11, blue: 0.118))
-        .cornerRadius(20)
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 }
 

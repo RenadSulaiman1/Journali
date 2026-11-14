@@ -15,7 +15,7 @@ struct ContentView: View {
                     EmptyStateView()
                 } else {
                     List {
-                        ForEach(viewModel.journals) { journal in
+                        ForEach(viewModel.filteredJournals) { journal in
                             JournalRowView(journal: journal) {
                                 viewModel.toggleBookmark(journal)
                             }
@@ -39,7 +39,19 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Journal")
+            .searchable(text: $viewModel.searchText, prompt: "Search")
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        ForEach(SortOption.allCases, id: \.self) { option in
+                            Button(option.rawValue) {
+                                viewModel.sortOption = option
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showNewJournal = true

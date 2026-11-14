@@ -3,6 +3,28 @@ import Combine
 
 class JournalViewModel: ObservableObject {
     @Published var journals: [Journal] = []
+    @Published var searchText = ""
+    @Published var sortOption: SortOption = .entryDate
+
+    var filteredJournals: [Journal] {
+        var result = journals
+
+        if !searchText.isEmpty {
+            result = result.filter {
+                $0.title.localizedCaseInsensitiveContains(searchText) ||
+                $0.content.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+
+        switch sortOption {
+        case .bookmark:
+            result.sort { $0.isBookmarked && !$1.isBookmarked }
+        case .entryDate:
+            result.sort { $0.date > $1.date }
+        }
+
+        return result
+    }
 
     func addJournal(title: String, content: String) {
         let newJournal = Journal(title: title, content: content)
