@@ -8,9 +8,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color.black.ignoresSafeArea()
-
+            Group {
                 if viewModel.journals.isEmpty {
                     EmptyStateView()
                 } else {
@@ -30,12 +28,11 @@ struct ContentView: View {
                                 } label: {
                                     Image(systemName: "trash.fill")
                                 }
-                                .tint(.red)
+                                .tint(Color("Destructive"))
                             }
                         }
                     }
                     .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
                 }
             }
             .navigationTitle("Journal")
@@ -83,10 +80,10 @@ struct ContentView: View {
                 Text("Are you sure you want to delete this journal?")
             }
         }
-        .preferredColorScheme(.dark)
     }
 }
 
 #Preview {
     ContentView()
+        .preferredColorScheme(.dark)
 }

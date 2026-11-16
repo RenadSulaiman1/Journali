@@ -14,6 +14,7 @@ struct JournaliApp: App {
                     ContentView()
                 }
             }
+            .preferredColorScheme(.dark)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     withAnimation {

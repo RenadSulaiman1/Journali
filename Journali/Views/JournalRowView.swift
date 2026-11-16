@@ -10,20 +10,20 @@ struct JournalRowView: View {
                 Text(journal.title)
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor(Color(red: 0.69, green: 0.60, blue: 0.99))
+                    .foregroundColor(Color("AccentPurple"))
                 Spacer()
                 Button {
                     onBookmarkTap()
                 } label: {
                     Image(systemName: journal.isBookmarked ? "bookmark.fill" : "bookmark")
-                        .foregroundColor(Color(red: 0.69, green: 0.60, blue: 0.99))
+                        .foregroundColor(Color("AccentPurple"))
                 }
                 .buttonStyle(.plain)
             }
 
             Text(journal.date.formatted(date: .numeric, time: .omitted))
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(Color("SecondaryText"))
 
             Text(journal.content)
                 .font(.body)
