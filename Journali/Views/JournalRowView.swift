@@ -8,8 +8,7 @@ struct JournalRowView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(journal.title)
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                    .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(Color("AccentPurple"))
                 Spacer()
                 Button {
@@ -22,12 +21,11 @@ struct JournalRowView: View {
             }
 
             Text(journal.date.formatted(date: .numeric, time: .omitted))
-                .font(.caption)
+                .font(.system(size: 14))
                 .foregroundColor(Color("SecondaryText"))
 
             Text(journal.content)
-                .font(.body)
-                .foregroundColor(.white)
+                .font(.system(size: 18))
                 .lineLimit(4)
         }
         .padding()
@@ -42,5 +40,6 @@ struct JournalRowView: View {
         onBookmarkTap: {}
     )
     .padding()
-    .background(Color.black)
+    .preferredColorScheme(.dark)
 }
+

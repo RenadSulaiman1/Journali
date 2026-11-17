@@ -13,19 +13,18 @@ struct NewJournalView: View {
                 TextField("Title", text: $title)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
 
                 Text(Date().formatted(date: .numeric, time: .omitted))
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                    .font(.system(size: 14))
+                    .foregroundColor(Color("SecondaryText"))
 
                 TextField("Type your Journal...", text: $content, axis: .vertical)
-                    .foregroundColor(.white)
+                    .font(.system(size: 18))
 
                 Spacer()
             }
             .padding()
-            .background(Color(red: 0.11, green: 0.11, blue: 0.118))
+            .background(Color("CardSurface"))
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -40,14 +39,21 @@ struct NewJournalView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "checkmark")
+                            .foregroundColor(.white)
+                    }
+                    .tint(Color("PrimaryAccent"))
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+                }
                     }
                 }
             }
         }
-        .preferredColorScheme(.dark)
-    }
-}
+    
+
 
 #Preview {
     NewJournalView(viewModel: JournalViewModel())
+        .preferredColorScheme(.dark)
 }
+

@@ -3,18 +3,17 @@ import SwiftUI
 struct EmptyStateView: View {
     var body: some View {
         VStack(spacing: 12) {
-            Image(systemName: "book.closed")
-                .font(.system(size: 80))
-                .foregroundColor(Color("AccentPurple"))
+            Image("EmptyBook")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 140)
 
             Text("Begin Your Journal")
-                .font(.title2)
-                .fontWeight(.bold)
+                .font(.system(size: 24, weight: .bold))
                 .foregroundColor(Color("AccentPurple"))
 
             Text("Craft your personal diary, tap the plus icon to begin")
-                .font(.body)
-                .foregroundColor(.white)
+                .font(.system(size: 18))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
         }
@@ -23,5 +22,5 @@ struct EmptyStateView: View {
 
 #Preview {
     EmptyStateView()
-        .background(Color.black)
+        .preferredColorScheme(.dark)
 }

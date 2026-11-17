@@ -22,6 +22,7 @@ struct ContentView: View {
                             }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                             .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                 Button {
                                     journalToDelete = journal
